@@ -9,539 +9,431 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --bg:        #0e1117;
-      --bg2:       #161b25;
-      --bg3:       #1c2332;
-      --border:    rgba(255,255,255,0.08);
-      --border2:   rgba(255,255,255,0.14);
-      --text:      #e8eaf0;
-      --muted:     #7a8398;
-      --accent:    #4ade80;
-      --accent2:   #22d3ee;
-      --tag-bg:    rgba(74,222,128,0.1);
-      --tag-text:  #4ade80;
-      --mono:      'DM Mono', monospace;
-      --sans:      'Inter', sans-serif;
-      --radius:    10px;
+      --bg: #0e1117; --bg2: #161b25; --bg3: #1c2332;
+      --border: rgba(255,255,255,0.08); --border2: rgba(255,255,255,0.14);
+      --text: #e8eaf0; --muted: #7a8398;
+      --accent: #4ade80; --accent2: #22d3ee;
+      --mono: 'DM Mono', monospace; --sans: 'Inter', sans-serif;
+      --radius: 10px;
     }
-
     html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 15px; line-height: 1.6; }
 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--sans);
-      font-size: 15px;
-      line-height: 1.6;
-      min-height: 100vh;
-    }
-
-    /* ── NAV ── */
     nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(14,17,23,0.85);
-      backdrop-filter: blur(12px);
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(14,17,23,0.9); backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 40px;
-      height: 56px;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0 40px; height: 56px;
     }
-    .nav-logo {
-      font-family: var(--mono);
-      font-size: 13px;
-      color: var(--accent);
-      letter-spacing: 0.04em;
-    }
-    .nav-links { display: flex; gap: 28px; }
-    .nav-links a {
-      font-size: 13px;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.15s;
-    }
+    .nav-logo { font-family: var(--mono); font-size: 13px; color: var(--accent); letter-spacing: 0.04em; }
+    .nav-links { display: flex; gap: 24px; flex-wrap: wrap; }
+    .nav-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color 0.15s; }
     .nav-links a:hover { color: var(--text); }
 
-    /* ── HERO ── */
-    .hero {
-      padding: 100px 40px 80px;
-      max-width: 760px;
-    }
-    .hero-eyebrow {
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--accent);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-    }
-    .hero h1 {
-      font-size: clamp(28px, 4vw, 44px);
-      font-weight: 300;
-      line-height: 1.25;
-      color: var(--text);
-      margin-bottom: 20px;
-    }
-    .hero h1 em {
-      font-style: normal;
-      color: var(--accent);
-      font-weight: 400;
-    }
-    .hero p {
-      font-size: 15px;
-      color: var(--muted);
-      max-width: 520px;
-      line-height: 1.75;
-      margin-bottom: 32px;
-    }
-    .hero-stats {
-      display: flex;
-      gap: 40px;
-    }
-    .stat-num {
-      font-family: var(--mono);
-      font-size: 22px;
-      color: var(--text);
-      display: block;
-    }
-    .stat-label {
-      font-size: 11px;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
+    .hero { padding: 90px 40px 70px; max-width: 780px; }
+    .hero-eyebrow { font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 20px; }
+    .hero h1 { font-size: clamp(26px, 4vw, 42px); font-weight: 300; line-height: 1.25; margin-bottom: 20px; }
+    .hero h1 em { font-style: normal; color: var(--accent); font-weight: 400; }
+    .hero p { font-size: 15px; color: var(--muted); max-width: 520px; line-height: 1.75; margin-bottom: 32px; }
+    .hero-stats { display: flex; gap: 40px; flex-wrap: wrap; }
+    .stat-num { font-family: var(--mono); font-size: 22px; color: var(--text); display: block; }
+    .stat-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
 
-    /* ── SECTION WRAPPER ── */
-    section {
-      padding: 60px 40px;
-      border-top: 1px solid var(--border);
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      gap: 16px;
-      margin-bottom: 36px;
-    }
-    .section-label {
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--accent);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-    .section-title {
-      font-size: 20px;
-      font-weight: 400;
-      color: var(--text);
-    }
+    .page-wrap { max-width: 1100px; margin: 0 auto; }
 
-    /* ── PROJECT GRID ── */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 16px;
-    }
-    .project-card {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      transition: border-color 0.2s, transform 0.2s;
-      text-decoration: none;
-      display: flex;
-      flex-direction: column;
-    }
-    .project-card:hover {
-      border-color: var(--border2);
-      transform: translateY(-2px);
-    }
-    .card-thumb {
-      height: 140px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 42px;
-      position: relative;
-      overflow: hidden;
-    }
-    .card-thumb::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, transparent 40%, var(--bg2));
-    }
-    .card-body { padding: 18px; flex: 1; display: flex; flex-direction: column; gap: 8px; }
-    .card-title { font-size: 14px; font-weight: 500; color: var(--text); line-height: 1.4; }
+    .cat-section { padding: 56px 40px 20px; border-top: 1px solid var(--border); }
+    .cat-header { display: flex; align-items: baseline; gap: 14px; margin-bottom: 10px; }
+    .cat-num { font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: 0.1em; }
+    .cat-title { font-size: 19px; font-weight: 400; color: var(--text); }
+    .cat-desc { font-size: 13px; color: var(--muted); margin-bottom: 28px; max-width: 600px; }
+
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 14px; margin-bottom: 40px; }
+
+    .project-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; transition: border-color 0.2s, transform 0.2s; cursor: pointer; }
+    .project-card:hover { border-color: var(--border2); transform: translateY(-2px); }
+
+    .card-thumb { height: 160px; overflow: hidden; position: relative; background: var(--bg3); }
+    .card-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s; }
+    .project-card:hover .card-thumb img { transform: scale(1.03); }
+
+    .card-body { padding: 16px; flex: 1; display: flex; flex-direction: column; gap: 6px; }
+    .card-title { font-size: 13px; font-weight: 500; color: var(--text); line-height: 1.4; }
     .card-meta { font-family: var(--mono); font-size: 11px; color: var(--muted); }
-    .card-desc { font-size: 13px; color: var(--muted); line-height: 1.6; flex: 1; }
-    .card-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
-    .tag {
-      font-family: var(--mono);
-      font-size: 10px;
-      padding: 3px 8px;
-      border-radius: 4px;
-      background: var(--tag-bg);
-      color: var(--tag-text);
-      border: 1px solid rgba(74,222,128,0.2);
-    }
-    .tag.blue { background: rgba(34,211,238,0.1); color: var(--accent2); border-color: rgba(34,211,238,0.2); }
-    .tag.amber { background: rgba(251,191,36,0.1); color: #fbbf24; border-color: rgba(251,191,36,0.2); }
+    .card-desc { font-size: 12px; color: var(--muted); line-height: 1.6; flex: 1; }
+    .card-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 6px; }
+    .tag { font-family: var(--mono); font-size: 10px; padding: 3px 8px; border-radius: 4px; }
+    .tg { background: rgba(74,222,128,0.1); color: #4ade80; border: 1px solid rgba(74,222,128,0.2); }
+    .tb { background: rgba(34,211,238,0.1); color: #22d3ee; border: 1px solid rgba(34,211,238,0.2); }
+    .ta { background: rgba(251,191,36,0.1); color: #fbbf24; border: 1px solid rgba(251,191,36,0.2); }
+    .tp { background: rgba(196,148,255,0.1); color: #c494ff; border: 1px solid rgba(196,148,255,0.2); }
+    .tr { background: rgba(248,113,113,0.1); color: #f87171; border: 1px solid rgba(248,113,113,0.2); }
 
-    /* ── MAP PLACEHOLDER ── */
-    .map-placeholder {
-      background: var(--bg3);
-      border: 1px dashed var(--border2);
-      border-radius: var(--radius);
-      height: 300px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      color: var(--muted);
-      font-size: 13px;
-    }
-    .map-placeholder .icon { font-size: 36px; }
-    .map-placeholder p { font-size: 12px; color: var(--muted); font-family: var(--mono); }
+    /* lightbox */
+    .lb-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 999; align-items: center; justify-content: center; padding: 20px; }
+    .lb-overlay.open { display: flex; }
+    .lb-inner { max-width: 900px; width: 100%; background: var(--bg2); border-radius: 12px; border: 1px solid var(--border2); overflow: hidden; }
+    .lb-img { width: 100%; max-height: 65vh; object-fit: contain; background: #000; display: block; }
+    .lb-body { padding: 18px 20px; }
+    .lb-title { font-size: 15px; font-weight: 500; color: var(--text); margin-bottom: 4px; }
+    .lb-meta { font-family: var(--mono); font-size: 11px; color: var(--muted); margin-bottom: 8px; }
+    .lb-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
+    .lb-close { float: right; font-family: var(--mono); font-size: 12px; color: var(--muted); cursor: pointer; background: none; border: 1px solid var(--border2); border-radius: 4px; padding: 4px 10px; }
+    .lb-close:hover { color: var(--text); }
 
-    /* ── SKILLS ── */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 12px;
-    }
-    .skill-item {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 16px;
-    }
-    .skill-name { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 6px; }
-    .skill-bar-bg {
-      height: 3px;
-      background: var(--border2);
-      border-radius: 2px;
-      overflow: hidden;
-    }
-    .skill-bar-fill {
-      height: 100%;
-      background: var(--accent);
-      border-radius: 2px;
-    }
+    .skills-section { padding: 56px 40px; border-top: 1px solid var(--border); }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 10px; margin-top: 24px; }
+    .skill-item { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; }
+    .skill-name { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 8px; }
+    .skill-bar-bg { height: 3px; background: var(--border2); border-radius: 2px; overflow: hidden; }
+    .skill-bar-fill { height: 100%; background: var(--accent); border-radius: 2px; }
     .skill-level { font-family: var(--mono); font-size: 10px; color: var(--muted); margin-top: 5px; }
 
-    /* ── ABOUT ── */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      align-items: start;
-    }
-    .about-text p { font-size: 14px; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+    .about-section { padding: 56px 40px; border-top: 1px solid var(--border); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; margin-top: 24px; }
+    .about-text p { font-size: 14px; color: var(--muted); line-height: 1.8; margin-bottom: 14px; }
     .about-text p strong { color: var(--text); font-weight: 500; }
     .contact-list { display: flex; flex-direction: column; gap: 12px; }
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 13px;
-      color: var(--muted);
-    }
-    .contact-icon {
-      width: 32px;
-      height: 32px;
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 15px;
-      flex-shrink: 0;
-    }
+    .contact-item { display: flex; align-items: center; gap: 12px; font-size: 13px; color: var(--muted); }
+    .contact-icon { width: 32px; height: 32px; background: var(--bg3); border: 1px solid var(--border); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; }
     .contact-item a { color: var(--accent); text-decoration: none; }
     .contact-item a:hover { text-decoration: underline; }
 
-    /* ── FOOTER ── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 28px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+    footer { border-top: 1px solid var(--border); padding: 26px 40px; display: flex; justify-content: space-between; align-items: center; }
     footer p { font-family: var(--mono); font-size: 11px; color: var(--muted); }
 
-    /* ── RESPONSIVE ── */
     @media (max-width: 640px) {
-      nav { padding: 0 20px; }
-      .nav-links { gap: 16px; }
-      .hero { padding: 60px 20px 50px; }
-      section { padding: 48px 20px; }
+      nav { padding: 0 16px; }
+      .hero, .cat-section, .skills-section, .about-section { padding-left: 20px; padding-right: 20px; }
       .about-grid { grid-template-columns: 1fr; }
-      footer { flex-direction: column; gap: 8px; text-align: center; }
+      footer { flex-direction: column; gap: 8px; }
     }
-
-    @media (prefers-reduced-motion: reduce) {
-      .project-card { transition: none; }
-    }
+    @media (prefers-reduced-motion: reduce) { .project-card, .card-thumb img { transition: none; } }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <span class="nav-logo">your_name.gis</span>
+  <span class="nav-logo">// your_name.gis</span>
   <div class="nav-links">
-    <a href="#projects">Projects</a>
+    <a href="#conservation">Conservation</a>
+    <a href="#remote">Remote Sensing</a>
+    <a href="#social">Social</a>
+    <a href="#california">California</a>
     <a href="#skills">Skills</a>
     <a href="#about">About</a>
   </div>
 </nav>
 
-<!-- HERO -->
-<div style="max-width: 1100px; margin: 0 auto; padding: 0 0;">
+<div class="page-wrap">
+
   <div class="hero">
     <div class="hero-eyebrow">// GIS &amp; Remote Sensing Portfolio</div>
     <h1>Mapping <em>conservation</em>,<br>deforestation, and<br>spatial data</h1>
-    <p>
-      Student researcher at Cal Poly San Luis Obispo specializing in species distribution modeling, SAR-based forest change detection, and environmental GIS analysis.
-    </p>
+    <p>Student researcher at Cal Poly San Luis Obispo specializing in species distribution modeling, SAR-based forest change detection, and environmental GIS analysis.</p>
     <div class="hero-stats">
-      <div>
-        <span class="stat-num">6+</span>
-        <span class="stat-label">Projects</span>
-      </div>
-      <div>
-        <span class="stat-num">3</span>
-        <span class="stat-label">Continents mapped</span>
-      </div>
-      <div>
-        <span class="stat-num">4</span>
-        <span class="stat-label">Species studied</span>
-      </div>
+      <div><span class="stat-num">17</span><span class="stat-label">Maps made</span></div>
+      <div><span class="stat-num">5</span><span class="stat-label">Continents mapped</span></div>
+      <div><span class="stat-num">6+</span><span class="stat-label">Courses</span></div>
+      <div><span class="stat-num">4</span><span class="stat-label">Species studied</span></div>
     </div>
   </div>
-</div>
 
-<!-- PROJECTS -->
-<section id="projects" style="border-top: 1px solid var(--border); max-width: 1100px; padding: 60px 40px;">
-  <div class="section-header">
-    <span class="section-label">01 —</span>
-    <h2 class="section-title">Projects</h2>
-  </div>
+  <!-- CATEGORY 1: CONSERVATION & SPECIES -->
+  <div class="cat-section" id="conservation">
+    <div class="cat-header">
+      <span class="cat-num">01 —</span>
+      <h2 class="cat-title">Conservation &amp; Species Distribution</h2>
+    </div>
+    <p class="cat-desc">MaxEnt species distribution models, pangolin habitat suitability, and illegal trade flow analysis.</p>
+    <div class="projects-grid">
 
-  <div class="projects-grid">
-
-    <!-- PROJECT 1 -->
-    <a class="project-card" href="#" aria-label="Giant Pangolin MaxEnt SDM project">
-      <div class="card-thumb" style="background: linear-gradient(135deg, #0d2818 0%, #1a4a2e 100%);">🦔</div>
-      <div class="card-body">
-        <div class="card-title">Giant Pangolin MaxEnt SDM</div>
-        <div class="card-meta">Sub-Saharan Africa · 2025 · ArcGIS Pro + R</div>
-        <div class="card-desc">Species distribution model built with MaxEnt in R, mapping suitable habitat and future range shifts under climate change scenarios.</div>
-        <div class="card-tags">
-          <span class="tag">MaxEnt</span>
-          <span class="tag">R</span>
-          <span class="tag">Conservation</span>
+      <div class="project-card" onclick="openLB('pangloin_max_ent.png','Giant Pangolin MaxEnt SDM','Sub-Saharan Africa · ArcGIS Pro + R · Biogeography','MaxEnt species distribution model mapping suitable habitat across Sub-Saharan Africa using GBIF occurrence points and WorldClim bioclimatic variables.')">
+        <div class="card-thumb"><img src="pangloin_max_ent.png" alt="Giant Pangolin MaxEnt SDM" /></div>
+        <div class="card-body">
+          <div class="card-title">Giant Pangolin MaxEnt SDM</div>
+          <div class="card-meta">Sub-Saharan Africa · ArcGIS Pro + R</div>
+          <div class="card-desc">Habitat suitability model using GBIF occurrence data and WorldClim bioclimatic variables.</div>
+          <div class="card-tags"><span class="tag tg">MaxEnt</span><span class="tag tg">R</span><span class="tag tg">Conservation</span></div>
         </div>
       </div>
-    </a>
 
-    <!-- PROJECT 2 -->
-    <a class="project-card" href="#" aria-label="NISAR Deforestation Mapping project">
-      <div class="card-thumb" style="background: linear-gradient(135deg, #0d1a2e 0%, #1a3040 100%);">🛰️</div>
-      <div class="card-body">
-        <div class="card-title">NISAR Deforestation Mapping</div>
-        <div class="card-meta">Pará, Brazil · 2025 · R + ArcGIS Pro</div>
-        <div class="card-desc">SAR backscatter analysis using NISAR GCOV HDF5 data to detect forest loss, with GEDI LiDAR calibration for above-ground biomass estimation.</div>
-        <div class="card-tags">
-          <span class="tag blue">SAR</span>
-          <span class="tag blue">GEDI LiDAR</span>
-          <span class="tag amber">AGB</span>
+      <div class="project-card" onclick="openLB('ndbi_pangolin.png','NDBI Analysis — Pangolin Protection Project','Sub-Saharan Africa · 2016 vs 2026 · Sentinel-2','Normalized Difference Built-up Index comparison between 2016 and 2026 to assess urbanization pressure on Giant Pangolin habitat.')">
+        <div class="card-thumb"><img src="ndbi_pangolin.png" alt="NDBI Pangolin Analysis" /></div>
+        <div class="card-body">
+          <div class="card-title">NDBI Analysis — Pangolin Protection</div>
+          <div class="card-meta">Sub-Saharan Africa · 2016 vs 2026</div>
+          <div class="card-desc">Built-up index change detection showing urbanization pressure on pangolin habitat over 10 years.</div>
+          <div class="card-tags"><span class="tag tb">NDBI</span><span class="tag tb">Sentinel-2</span><span class="tag tg">Change Detection</span></div>
         </div>
       </div>
-    </a>
 
-    <!-- PROJECT 3 -->
-    <a class="project-card" href="#" aria-label="Far Eastern Curlew SDM project">
-      <div class="card-thumb" style="background: linear-gradient(135deg, #1a1400 0%, #2e2400 100%);">🐦</div>
-      <div class="card-body">
-        <div class="card-title">Far Eastern Curlew SDM</div>
-        <div class="card-meta">East Asia / Pacific Flyway · 2025 · R</div>
-        <div class="card-desc">MaxEnt species distribution model for a critically endangered migratory shorebird, with future climate projections using CMIP6 data.</div>
-        <div class="card-tags">
-          <span class="tag">MaxEnt</span>
-          <span class="tag">CMIP6</span>
-          <span class="tag">Migration</span>
+      <div class="project-card" onclick="openLB('pangolin_illegal_trade.png','Pangolin Illegal Trade Flow Map','Global · ArcGIS Pro + R · CITES 2000–2024','Global flow line map of CITES pangolin trade data (2000–2024) showing trafficking routes, illegal activity counts by country, and volume of seizures.')">
+        <div class="card-thumb"><img src="pangolin_illegal_trade.png" alt="Pangolin Illegal Trade" /></div>
+        <div class="card-body">
+          <div class="card-title">Pangolin Illegal Trade Flow Map</div>
+          <div class="card-meta">Global · CITES 2000–2024</div>
+          <div class="card-desc">Trade flow lines and choropleth of illegal activity counts across 823 CITES records spanning all Manis species.</div>
+          <div class="card-tags"><span class="tag ta">CITES</span><span class="tag ta">Flow Maps</span><span class="tag tg">Trafficking</span></div>
         </div>
       </div>
-    </a>
 
-    <!-- PROJECT 4 -->
-    <a class="project-card" href="#" aria-label="Tree Species Classification project">
-      <div class="card-thumb" style="background: linear-gradient(135deg, #0d2010 0%, #1a3018 100%);">🌲</div>
-      <div class="card-body">
-        <div class="card-title">Tree Species Classification</div>
-        <div class="card-meta">Wisconsin · 2025 · Sentinel-2 + ArcGIS Pro</div>
-        <div class="card-desc">Random Forest classification of 5 tree species using multi-temporal Sentinel-2 imagery in Chequamegon-Nicolet National Forest.</div>
-        <div class="card-tags">
-          <span class="tag blue">Sentinel-2</span>
-          <span class="tag blue">Random Forest</span>
-          <span class="tag">ML</span>
+      <div class="project-card" onclick="openLB('maxent_curlew.png','Far Eastern Curlew MaxEnt SDM','East Asia / Pacific · ArcGIS Pro + R','Current MaxEnt species distribution model for the Far Eastern Curlew, a critically endangered migratory shorebird, showing habitat suitability along its flyway.')">
+        <div class="card-thumb"><img src="maxent_curlew.png" alt="Far Eastern Curlew SDM" /></div>
+        <div class="card-body">
+          <div class="card-title">Far Eastern Curlew MaxEnt SDM</div>
+          <div class="card-meta">East Asia / Pacific · R + ArcGIS Pro</div>
+          <div class="card-desc">Current habitat suitability model for a critically endangered migratory shorebird along the East Asian–Australasian Flyway.</div>
+          <div class="card-tags"><span class="tag tg">MaxEnt</span><span class="tag tg">Migration</span><span class="tag tg">Shorebird</span></div>
         </div>
       </div>
-    </a>
 
-    <!-- PROJECT 5 -->
-    <a class="project-card" href="#" aria-label="Pangolin Trade Flow Maps project">
-      <div class="card-thumb" style="background: linear-gradient(135deg, #1a1020 0%, #2a1840 100%);">🗺️</div>
-      <div class="card-body">
-        <div class="card-title">Pangolin Trade Flow Maps</div>
-        <div class="card-meta">Global · 2025 · ArcGIS Pro + R</div>
-        <div class="card-desc">Flow line visualization of CITES trade data (2000–2024) for all Manis species, with illegal trade flagging and Sankey diagram outputs.</div>
-        <div class="card-tags">
-          <span class="tag amber">CITES</span>
-          <span class="tag">Trafficking</span>
-          <span class="tag">Flow maps</span>
+      <div class="project-card" onclick="openLB('maxent_curlew_future.png','Future MaxEnt — Far Eastern Curlew','East Asia / Pacific · CMIP6 SSP3-7.0','Future climate projection of Far Eastern Curlew habitat suitability under SSP3-7.0 scenario, showing range shifts and potential habitat loss.')">
+        <div class="card-thumb"><img src="maxent_curlew_future.png" alt="Far Eastern Curlew Future SDM" /></div>
+        <div class="card-body">
+          <div class="card-title">Future MaxEnt — Far Eastern Curlew</div>
+          <div class="card-meta">East Asia / Pacific · CMIP6 SSP3-7.0</div>
+          <div class="card-desc">Future climate projection showing range shifts and habitat loss under a high-emissions scenario.</div>
+          <div class="card-tags"><span class="tag tb">CMIP6</span><span class="tag tb">SSP3-7.0</span><span class="tag tg">Climate</span></div>
         </div>
       </div>
-    </a>
 
-    <!-- PROJECT 6 -->
-    <a class="project-card" href="#" aria-label="Cal Poly Food Habit Survey Mapping project">
-      <div class="card-thumb" style="background: linear-gradient(135deg, #1a1000 0%, #2e1e00 100%);">📍</div>
-      <div class="card-body">
-        <div class="card-title">Cal Poly Food Habit Survey</div>
-        <div class="card-meta">San Luis Obispo, CA · 2025 · ArcGIS Pro</div>
-        <div class="card-desc">Geocoded student survey data (ANT455) mapping diet quality, produce consumption, and food habits across on- and off-campus locations.</div>
-        <div class="card-tags">
-          <span class="tag amber">Social data</span>
-          <span class="tag amber">ArcGIS Pro</span>
-          <span class="tag">Survey</span>
+    </div>
+  </div>
+
+  <!-- CATEGORY 2: REMOTE SENSING -->
+  <div class="cat-section" id="remote">
+    <div class="cat-header">
+      <span class="cat-num">02 —</span>
+      <h2 class="cat-title">Remote Sensing &amp; Change Detection</h2>
+    </div>
+    <p class="cat-desc">Satellite-based analysis of deforestation, fire burn severity, refugee camp expansion, and land cover classification.</p>
+    <div class="projects-grid">
+
+      <div class="project-card" onclick="openLB('validatinig_prodes_points.png','Validation of PRODES Points — Sentinel-2','Pará, Brazil · ArcGIS Pro + R · NISAR Project','NDVI change detection using Sentinel-2 imagery to validate PRODES deforestation alert points in Pará, Brazil, as part of the NISAR GCOV backscatter mapping project.')">
+        <div class="card-thumb"><img src="validatinig_prodes_points.png" alt="PRODES Validation" /></div>
+        <div class="card-body">
+          <div class="card-title">PRODES Validation — Sentinel-2</div>
+          <div class="card-meta">Pará, Brazil · ArcGIS Pro + R</div>
+          <div class="card-desc">NDVI change detection validating deforestation alert points from Brazil's PRODES system.</div>
+          <div class="card-tags"><span class="tag tb">Sentinel-2</span><span class="tag tb">NDVI</span><span class="tag tr">Deforestation</span></div>
         </div>
       </div>
-    </a>
 
-  </div>
-</section>
+      <div class="project-card" onclick="openLB('classification.png','Classification of Yosemite National Park','Yosemite, CA · ArcGIS Pro · Remote Sensing','Land cover classification of Yosemite National Park using multi-spectral satellite imagery, identifying vegetation types, bare rock, snow/ice, and water bodies.')">
+        <div class="card-thumb"><img src="classification.png" alt="Yosemite Classification" /></div>
+        <div class="card-body">
+          <div class="card-title">Land Cover Classification — Yosemite</div>
+          <div class="card-meta">Yosemite, CA · ArcGIS Pro</div>
+          <div class="card-desc">Multi-spectral land cover classification identifying vegetation, bare rock, snow, and water across Yosemite.</div>
+          <div class="card-tags"><span class="tag tb">Classification</span><span class="tag tb">Remote Sensing</span><span class="tag tg">Land Cover</span></div>
+        </div>
+      </div>
 
-<!-- FEATURED MAP EMBED AREA -->
-<section style="max-width: 1100px; padding: 0 40px 60px; margin: 0 auto;">
-  <div class="section-header">
-    <span class="section-label">02 —</span>
-    <h2 class="section-title">Featured map</h2>
-  </div>
-  <div class="map-placeholder">
-    <div class="icon">🌍</div>
-    <strong style="color: var(--text); font-size: 14px;">Embed your interactive map here</strong>
-    <p>Paste an ArcGIS StoryMap, Leaflet, or Google Maps iframe in place of this box</p>
-  </div>
-</section>
+      <div class="project-card" onclick="openLB('refuggecamp.png','Kutupalong Refugee Camp Growth','Bangladesh · Sentinel-2 · NDVI + NDBI','NDVI and NDBI raster change analysis tracking the rapid expansion of the Kutupalong refugee camp in Bangladesh from 2016 to 2024, with time-series chart.')">
+        <div class="card-thumb"><img src="refuggecamp.png" alt="Kutupalong Refugee Camp" /></div>
+        <div class="card-body">
+          <div class="card-title">Kutupalong Refugee Camp Growth</div>
+          <div class="card-meta">Bangladesh · Sentinel-2 · 2016–2024</div>
+          <div class="card-desc">NDVI and NDBI raster change detection tracking rapid camp expansion, with time-series chart.</div>
+          <div class="card-tags"><span class="tag tb">NDVI</span><span class="tag tb">NDBI</span><span class="tag ta">Change Detection</span></div>
+        </div>
+      </div>
 
-<!-- SKILLS -->
-<section id="skills" style="max-width: 1100px; padding: 60px 40px; margin: 0 auto;">
-  <div class="section-header">
-    <span class="section-label">03 —</span>
-    <h2 class="section-title">Tools &amp; skills</h2>
-  </div>
-  <div class="skills-grid">
-    <div class="skill-item">
-      <div class="skill-name">ArcGIS Pro</div>
-      <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:85%"></div></div>
-      <div class="skill-level">Advanced</div>
-    </div>
-    <div class="skill-item">
-      <div class="skill-name">R / terra / sf</div>
-      <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:70%"></div></div>
-      <div class="skill-level">Intermediate</div>
-    </div>
-    <div class="skill-item">
-      <div class="skill-name">MaxEnt SDM</div>
-      <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:80%"></div></div>
-      <div class="skill-level">Advanced</div>
-    </div>
-    <div class="skill-item">
-      <div class="skill-name">Sentinel-2 / SAR</div>
-      <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:70%"></div></div>
-      <div class="skill-level">Intermediate</div>
-    </div>
-    <div class="skill-item">
-      <div class="skill-name">Remote Sensing</div>
-      <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:75%"></div></div>
-      <div class="skill-level">Intermediate</div>
-    </div>
-    <div class="skill-item">
-      <div class="skill-name">QGIS</div>
-      <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:55%"></div></div>
-      <div class="skill-level">Beginner–Int.</div>
-    </div>
-    <div class="skill-item">
-      <div class="skill-name">Google Earth Engine</div>
-      <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:45%"></div></div>
-      <div class="skill-level">Beginner</div>
-    </div>
-    <div class="skill-item">
-      <div class="skill-name">Python (GeoPandas)</div>
-      <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:40%"></div></div>
-      <div class="skill-level">Beginner</div>
-    </div>
-  </div>
-</section>
+      <div class="project-card" onclick="openLB('firemap.png','NBR Analysis — 2023 Canada Fire','Canada · Sentinel-2 · Pre/Post Fire','Normalized Burn Ratio analysis comparing pre-fire (2022) and post-fire (2024) Sentinel-2 imagery to quantify burn severity from the 2023 Canadian wildfires.')">
+        <div class="card-thumb"><img src="firemap.png" alt="Canada Fire NBR Analysis" /></div>
+        <div class="card-body">
+          <div class="card-title">NBR Analysis — 2023 Canada Fire</div>
+          <div class="card-meta">Canada · Sentinel-2 · Pre/Post 2022–2024</div>
+          <div class="card-desc">Normalized Burn Ratio comparing pre- and post-fire imagery to map burn severity from the 2023 wildfires.</div>
+          <div class="card-tags"><span class="tag tr">NBR</span><span class="tag tb">Sentinel-2</span><span class="tag ta">Wildfire</span></div>
+        </div>
+      </div>
 
-<!-- ABOUT -->
-<section id="about" style="max-width: 1100px; padding: 60px 40px; margin: 0 auto;">
-  <div class="section-header">
-    <span class="section-label">04 —</span>
-    <h2 class="section-title">About</h2>
-  </div>
-  <div class="about-grid">
-    <div class="about-text">
-      <p>
-        <strong>GIS and remote sensing student</strong> at Cal Poly San Luis Obispo with a focus on conservation biology and environmental change detection.
-      </p>
-      <p>
-        My work centers on using satellite imagery, species occurrence data, and spatial statistics to understand where wildlife habitats are threatened — and where deforestation is accelerating. I'm especially interested in pangolin conservation and migratory shorebirds.
-      </p>
-      <p>
-        Currently exploring NISAR SAR data pipelines, MaxEnt future climate projections, and machine learning classification of forest cover.
-      </p>
     </div>
-    <div>
+  </div>
+
+  <!-- CATEGORY 3: SOCIAL / SPORTS -->
+  <div class="cat-section" id="social">
+    <div class="cat-header">
+      <span class="cat-num">03 —</span>
+      <h2 class="cat-title">Social &amp; Sports Geography</h2>
+    </div>
+    <p class="cat-desc">Spatial analysis of soccer development, FIFA rankings, crime patterns, and socioeconomic accessibility.</p>
+    <div class="projects-grid">
+
+      <div class="project-card" onclick="openLB('socceryouthga.png','Soccer Youth Development — Goal Scoring','Global · ArcGIS Pro','Choropleth map of expected goals per team by country, analyzing national youth soccer development through offensive output.')">
+        <div class="card-thumb"><img src="socceryouthga.png" alt="Soccer Youth Goal Scoring" /></div>
+        <div class="card-body">
+          <div class="card-title">Youth Soccer — Goal Scoring by Country</div>
+          <div class="card-meta">Global · ArcGIS Pro</div>
+          <div class="card-desc">Expected goals per team by country, mapping national youth soccer offensive development.</div>
+          <div class="card-tags"><span class="tag tp">Choropleth</span><span class="tag ta">Sports GIS</span></div>
+        </div>
+      </div>
+
+      <div class="project-card" onclick="openLB('socceryouthdef.png','Youth Development — Defensive Performance','Global · ArcGIS Pro','Choropleth map of expected goal difference based on defensive performance, comparing youth soccer development across countries.')">
+        <div class="card-thumb"><img src="socceryouthdef.png" alt="Youth Soccer Defense" /></div>
+        <div class="card-body">
+          <div class="card-title">Youth Soccer — Defensive Performance</div>
+          <div class="card-meta">Global · ArcGIS Pro</div>
+          <div class="card-desc">Expected goal difference based on defense, comparing youth soccer development internationally.</div>
+          <div class="card-tags"><span class="tag tp">Choropleth</span><span class="tag ta">Sports GIS</span></div>
+        </div>
+      </div>
+
+      <div class="project-card" onclick="openLB('soccerinla.png','Soccer Accessibility in LA','Los Angeles, CA · ArcGIS Pro','Spatial analysis of soccer field locations overlaid with average household income by census tract, examining whether soccer development resources are accessible to lower-income communities in LA.')">
+        <div class="card-thumb"><img src="soccerinla.png" alt="Soccer in LA" /></div>
+        <div class="card-body">
+          <div class="card-title">Soccer Field Accessibility in LA</div>
+          <div class="card-meta">Los Angeles, CA · ArcGIS Pro</div>
+          <div class="card-desc">Soccer fields mapped against household income by tract — examining access inequality in America's soccer capital.</div>
+          <div class="card-tags"><span class="tag tp">Social data</span><span class="tag ta">Equity</span><span class="tag tp">MLS</span></div>
+        </div>
+      </div>
+
+      <div class="project-card" onclick="openLB('fifa_ranking_x_people.png','FIFA Rankings vs. Player Base Size','Global · ArcGIS Pro','Bivariate map comparing FIFA national team rankings against the percentage of the population that plays soccer, revealing whether player base size predicts international success.')">
+        <div class="card-thumb"><img src="fifa_ranking_x_people.png" alt="FIFA Rankings vs Player Base" /></div>
+        <div class="card-body">
+          <div class="card-title">FIFA Rankings vs. Player Base Size</div>
+          <div class="card-meta">Global · ArcGIS Pro</div>
+          <div class="card-desc">Bivariate map comparing FIFA rankings with the share of population that plays soccer by country.</div>
+          <div class="card-tags"><span class="tag tp">Bivariate</span><span class="tag tp">FIFA</span><span class="tag ta">Sports GIS</span></div>
+        </div>
+      </div>
+
+      <div class="project-card" onclick="openLB('crime_in_la.png','LA Violent Crime &amp; Education','Los Angeles, CA · ArcGIS Pro','Dot density map of violent crime incidents by education level (high school through doctorate) overlaid on violent crime rate per 100,000 population by district.')">
+        <div class="card-thumb"><img src="crime_in_la.png" alt="Crime in LA" /></div>
+        <div class="card-body">
+          <div class="card-title">LA Violent Crime &amp; Education Levels</div>
+          <div class="card-meta">Los Angeles, CA · ArcGIS Pro</div>
+          <div class="card-desc">Dot density of reported crimes by education attainment overlaid on violent crime rate per district.</div>
+          <div class="card-tags"><span class="tag tr">Crime</span><span class="tag tp">Social data</span><span class="tag ta">Equity</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CATEGORY 4: CALIFORNIA ENVIRONMENT -->
+  <div class="cat-section" id="california">
+    <div class="cat-header">
+      <span class="cat-num">04 —</span>
+      <h2 class="cat-title">California Environmental Maps</h2>
+    </div>
+    <p class="cat-desc">Water quality, air pollution, endangered species sightings, and environmental equity across California.</p>
+    <div class="projects-grid">
+
+      <div class="project-card" onclick="openLB('water_qualit_ca.png','Water Quality vs. GDP — Central CA','Central California · ArcGIS Pro','Water quality test results (good, medium, poor) mapped against average GDP by county across Central California, exploring the relationship between economic prosperity and water access.')">
+        <div class="card-thumb"><img src="water_qualit_ca.png" alt="Water Quality CA" /></div>
+        <div class="card-body">
+          <div class="card-title">Water Quality vs. GDP — Central CA</div>
+          <div class="card-meta">Central California · ArcGIS Pro</div>
+          <div class="card-desc">Water quality results by county overlaid on GDP, examining the economic dimension of water access.</div>
+          <div class="card-tags"><span class="tag tb">Water Quality</span><span class="tag tp">GDP</span><span class="tag tg">Environment</span></div>
+        </div>
+      </div>
+
+      <div class="project-card" onclick="openLB('endangered_animals_ca.png','Endangered Species Sightings — California','California · ArcGIS Pro · 2025','Proportional symbol map of threatened species sightings from GBIF overlaid on California protected land designations (CPAD), showing where endangered animals are occurring relative to conservation areas.')">
+        <div class="card-thumb"><img src="endangered_animals_ca.png" alt="Endangered Animals CA" /></div>
+        <div class="card-body">
+          <div class="card-title">Endangered Species Sightings — CA</div>
+          <div class="card-meta">California · ArcGIS Pro · 2025</div>
+          <div class="card-desc">Threatened species sightings mapped against protected land (CPAD) across California.</div>
+          <div class="card-tags"><span class="tag tg">GBIF</span><span class="tag tg">Conservation</span><span class="tag tg">CPAD</span></div>
+        </div>
+      </div>
+
+      <div class="project-card" onclick="openLB('pollutionca.png','Pollution of California','California · ArcGIS Pro','PM2.5 air pollution interpolation surface combined with industrial process point locations and population density, showing the Central Valley as the most heavily impacted region.')">
+        <div class="card-thumb"><img src="pollutionca.png" alt="Pollution CA" /></div>
+        <div class="card-body">
+          <div class="card-title">Air Pollution of California</div>
+          <div class="card-meta">California · ArcGIS Pro</div>
+          <div class="card-desc">PM2.5 interpolation with industrial sources and population density — Central Valley pollution corridor clearly visible.</div>
+          <div class="card-tags"><span class="tag tr">PM2.5</span><span class="tag tp">Interpolation</span><span class="tag tg">Environment</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="skills-section" id="skills">
+    <div class="cat-header">
+      <span class="cat-num">05 —</span>
+      <h2 class="cat-title">Tools &amp; Skills</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-item"><div class="skill-name">ArcGIS Pro</div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:88%"></div></div><div class="skill-level">Advanced</div></div>
+      <div class="skill-item"><div class="skill-name">R / terra / sf</div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:72%"></div></div><div class="skill-level">Intermediate</div></div>
+      <div class="skill-item"><div class="skill-name">MaxEnt SDM</div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:82%"></div></div><div class="skill-level">Advanced</div></div>
+      <div class="skill-item"><div class="skill-name">Sentinel-2 / SAR</div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:72%"></div></div><div class="skill-level">Intermediate</div></div>
+      <div class="skill-item"><div class="skill-name">Change Detection</div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:78%"></div></div><div class="skill-level">Intermediate</div></div>
+      <div class="skill-item"><div class="skill-name">Remote Sensing</div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:75%"></div></div><div class="skill-level">Intermediate</div></div>
+      <div class="skill-item"><div class="skill-name">Google Earth Engine</div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:45%"></div></div><div class="skill-level">Beginner</div></div>
+      <div class="skill-item"><div class="skill-name">Spatial Statistics</div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:65%"></div></div><div class="skill-level">Intermediate</div></div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="about-section" id="about">
+    <div class="cat-header">
+      <span class="cat-num">06 —</span>
+      <h2 class="cat-title">About</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p><strong>GIS and remote sensing student</strong> at Cal Poly San Luis Obispo with a focus on conservation biology and environmental change detection.</p>
+        <p>My work spans species distribution modeling, SAR-based deforestation detection, land cover classification, and social geography — from pangolin trafficking routes to soccer accessibility in Los Angeles.</p>
+        <p>Currently exploring NISAR SAR data pipelines, MaxEnt future climate projections, and satellite-based urban growth monitoring.</p>
+      </div>
       <div class="contact-list">
-        <div class="contact-item">
-          <div class="contact-icon">🎓</div>
-          <span>Cal Poly San Luis Obispo — B.S. Geography</span>
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon">📧</div>
-          <span><a href="mailto:your@email.com">your@email.com</a></span>
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon">🐙</div>
-          <span><a href="https://github.com/yourusername" target="_blank" rel="noopener">github.com/yourusername</a></span>
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon">🔗</div>
-          <span><a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener">LinkedIn profile</a></span>
-        </div>
+        <div class="contact-item"><div class="contact-icon">🎓</div><span>Cal Poly San Luis Obispo</span></div>
+        <div class="contact-item"><div class="contact-icon">📧</div><span><a href="mailto:your@email.com">your@email.com</a></span></div>
+        <div class="contact-item"><div class="contact-icon">🐙</div><span><a href="https://github.com/asaucem8-eng" target="_blank" rel="noopener">github.com/asaucem8-eng</a></span></div>
+        <div class="contact-item"><div class="contact-icon">🔗</div><span><a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener">LinkedIn profile</a></span></div>
       </div>
     </div>
   </div>
-</section>
 
-<!-- FOOTER -->
+</div><!-- end page-wrap -->
+
 <footer>
   <p>// Built with HTML &amp; CSS · Hosted on GitHub Pages</p>
   <p>Your Name · Cal Poly SLO · 2025</p>
 </footer>
 
+<!-- LIGHTBOX -->
+<div class="lb-overlay" id="lb" onclick="closeLB(event)">
+  <div class="lb-inner">
+    <img class="lb-img" id="lb-img" src="" alt="" />
+    <div class="lb-body">
+      <button class="lb-close" onclick="document.getElementById('lb').classList.remove('open')">✕ close</button>
+      <div class="lb-title" id="lb-title"></div>
+      <div class="lb-meta" id="lb-meta"></div>
+      <div class="lb-desc" id="lb-desc"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+function openLB(src, title, meta, desc) {
+  document.getElementById('lb-img').src = src;
+  document.getElementById('lb-img').alt = title;
+  document.getElementById('lb-title').textContent = title;
+  document.getElementById('lb-meta').textContent = meta;
+  document.getElementById('lb-desc').textContent = desc;
+  document.getElementById('lb').classList.add('open');
+}
+function closeLB(e) {
+  if (e.target === document.getElementById('lb')) {
+    document.getElementById('lb').classList.remove('open');
+  }
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') document.getElementById('lb').classList.remove('open');
+});
+</script>
 </body>
 </html>
